@@ -14,13 +14,11 @@ import NotFoundPage from "./pages/NotFoundPage";
 function App() {
   return (
     <Routes>
-      {/* Public routes */}
       <Route path="/" element={<HomePage />} />
       <Route path="/home" element={<Navigate to="/" replace />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      {/* Protected routes: user must be logged in */}
       <Route
         path="/dashboard"
         element={
@@ -51,7 +49,6 @@ function App() {
       <Route
         path="/create-event"
         element={
-          // Role guard: only admin can access event creation page.
           <ProtectedRoute allowedRoles={["admin"]}>
             <CreateEventPage />
           </ProtectedRoute>
